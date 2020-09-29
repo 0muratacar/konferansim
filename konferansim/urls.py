@@ -20,6 +20,7 @@ from AdminPage.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('',index),
     path('anasayfa',index),
 
@@ -28,5 +29,8 @@ urlpatterns = [
     path('hakem',hakemSayfası),
     path('yazar',yazarSayfası),
     path('userPageLayout',userPageLaout),
-    path('giris',giris),
+    
+    path('giris',girisSayfası),
+    path('logout',logoutUser),
+
 ]

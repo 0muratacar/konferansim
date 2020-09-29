@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect, render
 from .forms import *
 from django.contrib.auth import authenticate
-from django.contrib.auth import login as login_auth
+from django.contrib.auth import login as login_auth,authenticate,logout
 from AdminPage.models import *
 
 # Create your views here.
@@ -26,7 +26,7 @@ def yazarSayfası(request):
 
 
 
-def giris(request):
+def girisSayfası(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
             current_user_statu = request.user.statu
@@ -38,7 +38,7 @@ def giris(request):
                 return render(request,'kullanıcıSayfaları/hakemPage.html')
             
         form = LoginForm()
-        return render(request, "girisKaydol/login.html", {'form': form})
+        return render(request, "girisKaydol/loginformlu.html", {'form': form})
     elif request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -49,8 +49,13 @@ def giris(request):
                 return render(request,'kullanıcıSayfaları/yazarPage.html')
             else:
                 form = LoginForm()
-                return render(request, 'girisKaydol/login.html', {'ErrorMessage': 'Can Not Able To Authenticate You', 'form': form})
+                return render(request, 'girisKaydol/loginformlu.html', {'ErrorMessage': 'Can Not Able To Authenticate You', 'form': form})
         else:
             form = LoginForm()
-            return render(request, 'girisKaydol/login.html', {'ErrorMessage': 'Check Your Inputs', 'form': form})
+            return render(request, 'girisKaydol/loginformlu.html', {'ErrorMessage': 'Check Your Inputs', 'form': form})
+
+def logoutUser(request):
+    logout(request)
+    return render(request,"anasayfa/index.html")
+
   
