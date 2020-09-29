@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'konferansim.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'makaledatabase',
-        'USER': 'root',
-        'PASSWORD': 'murat1234',
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'NAME': 'konferans',
+        'USER': 'innoem',
+        'PASSWORD': ']@xdLGz:C#U34_~h',
+        'HOST': '185.242.160.177',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
